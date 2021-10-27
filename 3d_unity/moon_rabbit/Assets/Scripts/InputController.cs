@@ -39,5 +39,13 @@ public class InputController : MonoBehaviour
 
         SystemManager.Instance.Hero.ProcessInput(moveDirection);
 
+
+
+        Quaternion moveArm = Quaternion.identity;
+        if (Input.GetKey(KeyCode.Z))
+        {
+            moveArm.Equals(1, 0, 0)
+        }
+
     }
 }
