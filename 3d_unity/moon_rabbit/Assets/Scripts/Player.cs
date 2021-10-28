@@ -8,9 +8,6 @@ public class Player : MonoBehaviour
     Vector3 MoveVector = Vector3.zero;
 
     [SerializeField]
-    Quaternion mMoveArm = Quaternion.identity;
-
-    [SerializeField]
     float Speed;
 
     [SerializeField]
@@ -21,6 +18,14 @@ public class Player : MonoBehaviour
 
     [SerializeField]
     Transform mArmTransform;
+    // arm
+    Quaternion mMoveArm = Quaternion.identity;
+    Vector3 mAgle = Vector3.zero;
+    Vector3 mArmPos = Vector3.zero;
+    // 공중부양
+    float mDelta = 0.0015f;
+    float mLevitSpeed = 2.0f;
+
 
 
     // Start is called before the first frame update
@@ -33,6 +38,8 @@ public class Player : MonoBehaviour
     void Update()
     {
         UpdateMove();
+        UpdateArm();
+        Levitating();
     }
 
     void UpdateMove()
@@ -81,10 +88,19 @@ public class Player : MonoBehaviour
 
     void UpdateArm()
     {
-
+        mArmTransform.rotation = mMoveArm;
+        mArmTransform.localPosition = mArmPos;
     }
-    public void ProcessArmInput(Quaternion moveArm)
+    public void ProcessArmInput(Vector3 moveAngle, Vector3 moveDirection)
     {
+        mMoveArm.eulerAngles = moveAngle;
+        mArmPos = moveDirection;
+    }
+
+    void Levitating()
+    {
+        transform.position += 
+            new Vector3(0.0f, mDelta * Mathf.Sin(Time.time * mLevitSpeed), 0.0f);
 
     }
 }

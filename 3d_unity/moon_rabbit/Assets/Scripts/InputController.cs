@@ -40,12 +40,16 @@ public class InputController : MonoBehaviour
         SystemManager.Instance.Hero.ProcessInput(moveDirection);
 
 
+        Vector3 moveDirectionArm = Vector3.zero;
+        Vector3 moveDirectionArm2 = new Vector3(0.09f, 0.26f, -0.46f);
 
-        Quaternion moveArm = Quaternion.identity;
-        if (Input.GetKey(KeyCode.Z))
+        if (Input.GetKey(KeyCode.R))
         {
-            moveArm.Equals(1, 0, 0)
+            moveDirectionArm.z = 115.02f;
+            moveDirectionArm2.Set(0.12f, 0.38f, -0.46f);
         }
 
+        
+        SystemManager.Instance.Hero.ProcessArmInput(moveDirectionArm, moveDirectionArm2);
     }
 }
