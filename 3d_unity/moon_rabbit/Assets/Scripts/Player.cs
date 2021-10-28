@@ -99,8 +99,8 @@ public class Player : MonoBehaviour
 
     void Levitating()
     {
-        transform.position += 
-            new Vector3(0.0f, mDelta * Mathf.Sin(Time.time * mLevitSpeed), 0.0f);
-
+        Vector3 LevitMove = Vector3.zero;
+        LevitMove.y += (mDelta * Mathf.Sin(Time.time * mLevitSpeed));
+        transform.position += AdjustMoveVector(LevitMove);
     }
 }
