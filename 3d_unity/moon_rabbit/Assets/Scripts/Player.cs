@@ -41,7 +41,7 @@ public class Player : MonoBehaviour
         UpdateArm();
         Levitating();
     }
-
+    // 캐릭터 움직이기
     void UpdateMove()
     {
         if (MoveVector.sqrMagnitude == 0)
@@ -85,7 +85,7 @@ public class Player : MonoBehaviour
 
         return moveVector;
     }
-
+    // 팔 움직이기
     void UpdateArm()
     {
         mArmTransform.rotation = mMoveArm;
@@ -96,7 +96,7 @@ public class Player : MonoBehaviour
         mMoveArm.eulerAngles = moveAngle;
         mArmPos = moveDirection;
     }
-
+    // 공중부양
     void Levitating()
     {
         Vector3 LevitMove = Vector3.zero;
