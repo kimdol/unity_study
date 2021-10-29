@@ -10,7 +10,7 @@ public class Enemy : MonoBehaviour
         Ready = 0,  // 준비 완료
         Appear,     // 등장
         Battle,     // 전투중
-        Dead,       // 사망
+        Dead,       // 파괴
         Disappear   // 퇴장
     }
 
@@ -26,6 +26,7 @@ public class Enemy : MonoBehaviour
 
     [SerializeField]
     float CurrentSpeed;
+
 
     Vector3 CurrentVelocity;
 
@@ -43,12 +44,12 @@ public class Enemy : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.L))
         {
-            Appear(new Vector3(7.0f, 0.0f, 0.0f));
+            Appear(new Vector3(-0.73f, -4.35f, 0.0f));
         }
 
         if (Input.GetKeyDown(KeyCode.K))
         {
-            Disappear(new Vector3(-15f, 0.0f, 0.0f));
+            Destruction(new Vector3(-0.73f, -10.52f, 0.0f));
         }
         if (CurrentState == State.Appear || CurrentState == State.Disappear)
         {
@@ -63,17 +64,20 @@ public class Enemy : MonoBehaviour
     }
     void UpdateMove()
     {
+        // 파괴 상태
+        if (CurrentState == State.Disappear)
+        {
+            transform.position = TargetPosition;
+        }
         float distance = Vector3.Distance(TargetPosition, transform.position);
         if (distance == 0)
         {
             Arrived();
             return;
         }
-
+        // 나타남 상태
         CurrentVelocity = (TargetPosition - transform.position).normalized * CurrentSpeed;
-
-
-        transform.position = Vector3.SmoothDamp(transform.position, TargetPosition, ref CurrentVelocity, distance / CurrentSpeed, MaxSpeed);
+        transform.position = Vector3.SmoothDamp(transform.position, TargetPosition, ref CurrentVelocity, (distance / CurrentSpeed), MaxSpeed);
     }
     void Arrived()
     {
@@ -102,5 +106,10 @@ public class Enemy : MonoBehaviour
 
         CurrentState = State.Disappear;
         MoveStartTime = Time.time;
+    }
+    void Destruction(Vector3 targetPos)
+    {
+        TargetPosition = targetPos;
+        CurrentState = State.Disappear;
     }
 }
