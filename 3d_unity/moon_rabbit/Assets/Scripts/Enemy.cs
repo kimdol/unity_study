@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public enum State
+    public enum State : int
     {
-        None = -1,  // 사용전
-        Ready = 0,  // 준비 완료
-        Appear,     // 등장
-        Battle,     // 전투중
-        Dead,       // 파괴
-        Disappear   // 퇴장
+        None = -1,      // 사용전
+        Ready = 0,      // 준비 완료
+        Appear,         // 등장
+        Battle,         // 전투중
+        Destruction,    // 파괴
+        Dead,           // 사망
+        Disappear       // 퇴장
     }
 
     [SerializeField]
@@ -32,6 +33,8 @@ public class Enemy : MonoBehaviour
 
     float MoveStartTime = 0.0f;
 
+    float BattleStateTime = 0.0f;
+
 
     // Start is called before the first frame update
     void Start()
@@ -44,17 +47,25 @@ public class Enemy : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.L))
         {
-            Appear(new Vector3(-0.73f, -4.35f, 0.0f));
+            Appear(new Vector3(transform.position.x, -4.35f, transform.position.z));
         }
 
-        if (Input.GetKeyDown(KeyCode.K))
+        switch (CurrentState)
         {
-            Destruction(new Vector3(-0.73f, -10.52f, 0.0f));
-        }
-        if (CurrentState == State.Appear || CurrentState == State.Disappear)
-        {
-            UpdateSpeed();
-            UpdateMove();
+            case State.None:
+            case State.Ready:
+                break;
+            case State.Dead:
+                break;
+            case State.Appear:
+            case State.Disappear:
+                UpdateSpeed();
+                UpdateMove();
+                break;
+            case State.Battle:
+                UpdateBattle();
+                break;
+
         }
     }
 
@@ -65,7 +76,7 @@ public class Enemy : MonoBehaviour
     void UpdateMove()
     {
         // 파괴 상태
-        if (CurrentState == State.Disappear)
+        if (CurrentState == State.Destruction)
         {
             transform.position = TargetPosition;
         }
@@ -85,6 +96,7 @@ public class Enemy : MonoBehaviour
         if (CurrentState == State.Appear)
         {
             CurrentState = State.Battle;
+            BattleStateTime = Time.time;
         }
         else if (CurrentState == State.Disappear)
         {
@@ -107,9 +119,30 @@ public class Enemy : MonoBehaviour
         CurrentState = State.Disappear;
         MoveStartTime = Time.time;
     }
-    void Destruction(Vector3 targetPos)
+    void MoveDestruction(Vector3 targetPos)
     {
         TargetPosition = targetPos;
         CurrentState = State.Disappear;
+    }
+
+    void UpdateBattle()
+    {
+        if(Time.time - BattleStateTime > 3.0f)
+        {
+            Disappear(new Vector3(transform.position.x, -11.01f, transform.position.z));
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Player player = other.GetComponentInParent<Player>();
+        if (player)
+        {
+            player.OnCrash(this);
+        }
+    }
+    public void OnCrash(Player enymy)
+    {
+
     }
 }

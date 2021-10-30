@@ -103,4 +103,17 @@ public class Player : MonoBehaviour
         LevitMove.y += (mDelta * Mathf.Sin(Time.time * mLevitSpeed));
         transform.position += AdjustMoveVector(LevitMove);
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Enemy enemy = other.GetComponentInParent<Enemy>();
+        if (enemy)
+        {
+            enemy.OnCrash(this);
+        }
+    }
+    public void OnCrash(Enemy enemy)
+    {
+
+    }
 }
