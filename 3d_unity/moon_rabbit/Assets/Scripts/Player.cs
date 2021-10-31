@@ -18,6 +18,17 @@ public class Player : MonoBehaviour
 
     [SerializeField]
     Transform mArmTransform;
+
+    [SerializeField]
+    Transform FireTransform;
+
+    [SerializeField]
+    GameObject Bullet;
+
+    [SerializeField]
+    float BulletSpeed = 1;
+
+
     // arm
     Quaternion mMoveArm = Quaternion.identity;
     Vector3 mAgle = Vector3.zero;
@@ -115,5 +126,13 @@ public class Player : MonoBehaviour
     public void OnCrash(Enemy enemy)
     {
 
+    }
+
+    public void Fire()
+    {
+        GameObject go = Instantiate(Bullet);
+
+        Bullet bullet = go.GetComponent<Bullet>();
+        bullet.Fire(OwnerSide.Player, FireTransform.position, FireTransform.right, BulletSpeed);
     }
 }

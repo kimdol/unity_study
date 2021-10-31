@@ -55,7 +55,6 @@ GameObject:
   - component: {fileID: 3149391512086203593}
   - component: {fileID: 104100406326229904}
   - component: {fileID: 3329929901316396025}
-  - component: {fileID: 1132415319525025102}
   m_Layer: 0
   m_Name: BlueManArm
   m_TagString: Untagged
@@ -126,20 +125,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &1132415319525025102
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1074718509111298584}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &4685450167630102362
 GameObject:
   m_ObjectHideFlags: 0
@@ -151,7 +136,6 @@ GameObject:
   - component: {fileID: 2887832543055769565}
   - component: {fileID: 8550810578691030598}
   - component: {fileID: 4429710960774706655}
-  - component: {fileID: 6121974350079327526}
   m_Layer: 0
   m_Name: BlueMan
   m_TagString: Untagged
@@ -222,20 +206,36 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &6121974350079327526
-MeshCollider:
+--- !u!1 &4790902022928114258
+GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4685450167630102362}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3918602020858879668}
+  m_Layer: 0
+  m_Name: FirePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3918602020858879668
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4790902022928114258}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.61, y: 1.96, z: 0}
+  m_LocalScale: {x: 0.43290046, y: 0.9433963, z: 3.125}
+  m_Children: []
+  m_Father: {fileID: 2080522437939146564}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6944644675129381443
 GameObject:
   m_ObjectHideFlags: 0
@@ -268,6 +268,7 @@ Transform:
   - {fileID: 2887832543055769565}
   - {fileID: 3149391512086203593}
   - {fileID: 4791145244863069131}
+  - {fileID: 3918602020858879668}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -287,7 +288,10 @@ MonoBehaviour:
   Speed: 0
   boxCollider: {fileID: 0}
   MainBGQuadTransform: {fileID: 0}
-  mArmTransform: {fileID: 0}
+  mArmTransform: {fileID: 3149391512086203593}
+  FireTransform: {fileID: 3918602020858879668}
+  Bullet: {fileID: 8441912208073844466, guid: 2a3685cd69f626647bcb85e208665db5, type: 3}
+  BulletSpeed: 1
 --- !u!54 &304729030597964435
 Rigidbody:
   m_ObjectHideFlags: 0
