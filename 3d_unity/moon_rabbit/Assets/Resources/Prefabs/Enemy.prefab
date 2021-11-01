@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2880138823899876165}
   - component: {fileID: 7824532425395485028}
   - component: {fileID: 3726419718138538732}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -75,7 +75,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7438476317869620427}
   - component: {fileID: 418858180419952812}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: EnemyCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -120,7 +120,7 @@ GameObject:
   - component: {fileID: 230421914207439982}
   - component: {fileID: 308840846911572728}
   - component: {fileID: 1315926623112622704}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: House
   m_TagString: Untagged
   m_Icon: {fileID: 0}

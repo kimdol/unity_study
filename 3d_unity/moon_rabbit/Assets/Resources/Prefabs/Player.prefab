@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4791145244863069131}
   - component: {fileID: 1181551459160225977}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PlayerCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55,7 +55,7 @@ GameObject:
   - component: {fileID: 3149391512086203593}
   - component: {fileID: 104100406326229904}
   - component: {fileID: 3329929901316396025}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BlueManArm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 2887832543055769565}
   - component: {fileID: 8550810578691030598}
   - component: {fileID: 4429710960774706655}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BlueMan
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -215,7 +215,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3918602020858879668}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: FirePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -247,7 +247,7 @@ GameObject:
   - component: {fileID: 2080522437939146564}
   - component: {fileID: 4483743833545150412}
   - component: {fileID: 304729030597964435}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
