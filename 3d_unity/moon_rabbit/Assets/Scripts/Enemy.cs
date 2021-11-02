@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class Enemy : Actor
 {
     public enum State : int
     {
@@ -35,15 +35,10 @@ public class Enemy : MonoBehaviour
 
     float BattleStateTime = 0.0f;
 
+    [SerializeField]
+    int GamePoint = 1;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
+    protected override void UpdateActor()
     {
         switch (CurrentState)
         {
@@ -131,13 +126,19 @@ public class Enemy : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Player player = other.GetComponentInParent<Player>();
-        if (player)
-        {
-            player.OnCrash(this);
-        }
     }
-    public void OnCrash(Player enymy)
+    public override void OnCrash(Actor attacker, int damage)
     {
+        OnCrash(attacker, damage);
+    }
 
+    protected override void OnDead(Actor killer)
+    {
+        base.OnDead(killer);
+        {
+            base.OnDead(killer);
+            SystemManager.Instance.GamePointAccumulator.Accumulate(GamePoint);
+            CurrentState = State.Dead;
+        }
     }
 }

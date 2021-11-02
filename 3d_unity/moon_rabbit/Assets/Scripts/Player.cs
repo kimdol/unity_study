@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player : Actor
 {
     [SerializeField]
     Vector3 MoveVector = Vector3.zero;
@@ -37,21 +37,13 @@ public class Player : MonoBehaviour
     float mDelta = 0.0015f;
     float mLevitSpeed = 2.0f;
 
-
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
+    protected override void UpdateActor()
     {
         UpdateMove();
         UpdateArm();
         Levitating();
     }
+
     // 캐릭터 움직이기
     void UpdateMove()
     {
@@ -118,14 +110,14 @@ public class Player : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Enemy enemy = other.GetComponentInParent<Enemy>();
-        if (enemy)
+        if (!enemy.IsDead)
         {
-            enemy.OnCrash(this);
+            enemy.OnCrash(this, CrashDamage);
         }
     }
-    public void OnCrash(Enemy enemy)
+    public override void OnCrash(Actor attacker, int damage)
     {
-
+        OnCrash(attacker, damage);
     }
 
     public void Fire()
@@ -133,6 +125,6 @@ public class Player : MonoBehaviour
         GameObject go = Instantiate(Bullet);
 
         Bullet bullet = go.GetComponent<Bullet>();
-        bullet.Fire(OwnerSide.Player, FireTransform.position, FireTransform.right, BulletSpeed);
+        bullet.Fire(OwnerSide.Player, FireTransform.position, FireTransform.right, BulletSpeed, Damage);
     }
 }

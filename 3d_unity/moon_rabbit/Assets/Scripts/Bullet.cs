@@ -22,7 +22,10 @@ public class Bullet : MonoBehaviour
     float FiredTime;
     bool NeedMove = false;
 
-    bool Hited = false;
+    bool Hited = false; // 부딛혔는지 플래그
+
+    [SerializeField]
+    int Damage = 1;
 
 
     // Start is called before the first frame update
@@ -51,12 +54,13 @@ public class Bullet : MonoBehaviour
         transform.position += moveVector;
     }
 
-    public void Fire(OwnerSide Fireowner, Vector3 firePosition, Vector3 direction, float speed)
+    public void Fire(OwnerSide Fireowner, Vector3 firePosition, Vector3 direction, float speed, int damage)
     {
         ownerSide = Fireowner;
         transform.position = firePosition;
         MoveDirection = direction;
         Speed = speed;
+        Damage = damage;
 
         NeedMove = true;
         FiredTime = Time.time;
@@ -78,23 +82,34 @@ public class Bullet : MonoBehaviour
     {
         if (Hited)
             return;
+
+        if(collider.gameObject.layer == LayerMask.NameToLayer("EnemyBullet")
+            || collider.gameObject.layer == LayerMask.NameToLayer("PlayerBullet"))
+        {
+            return;
+        }
+
+        if(ownerSide == OwnerSide.Player)
+        {
+            Enemy enemy = collider.GetComponentInParent<Enemy>();
+            if (enemy.IsDead)
+                return;
+            enemy.OnBulletHited(Damage);
+        }
+        else
+        {
+            Player player = collider.GetComponentInParent<Player>();
+            if (player.IsDead)
+                return;
+            player.OnBulletHited(Damage);
+        }
+
         // 콜리더 부하 방지
         Collider myCollider = GetComponentInChildren<Collider>();
         myCollider.enabled = false;
 
         Hited = true;
         NeedMove = false;
-
-        Debug.Log("OnBulletCollision cllider = " + collider.name);
-
-        if(ownerSide == OwnerSide.Player)
-        {
-            Enemy enemy = collider.GetComponentInParent<Enemy>();
-        }
-        else
-        {
-            Player player = collider.GetComponentInParent<Player>();
-        }
     }
 
     private void OnTriggerEnter(Collider other)
