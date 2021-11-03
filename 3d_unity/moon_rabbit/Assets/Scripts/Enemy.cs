@@ -129,16 +129,14 @@ public class Enemy : Actor
     }
     public override void OnCrash(Actor attacker, int damage)
     {
-        OnCrash(attacker, damage);
+        base.OnCrash(attacker, damage);
     }
 
     protected override void OnDead(Actor killer)
     {
         base.OnDead(killer);
-        {
-            base.OnDead(killer);
-            SystemManager.Instance.GamePointAccumulator.Accumulate(GamePoint);
-            CurrentState = State.Dead;
-        }
+        SystemManager.Instance.GamePointAccumulator.Accumulate(GamePoint);
+        CurrentState = State.Dead;
+        Destroy(gameObject);
     }
 }

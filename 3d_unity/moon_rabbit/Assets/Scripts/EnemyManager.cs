@@ -20,7 +20,7 @@ public class EnemyManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.L))
         {
-            GenerateEnemy(new Vector3(-0.73f, 3.77f, 0.0f));
+            GenerateEnemy(new Vector3(3.49f, 9.98f, 0.0f));
         }
     }
 
@@ -36,7 +36,7 @@ public class EnemyManager : MonoBehaviour
         go.transform.position = position;
 
         Enemy enemy = go.GetComponent<Enemy>();
-        enemy.Appear(new Vector3(enemy.transform.position.x, -4.35f, enemy.transform.position.z));
+        enemy.Appear(new Vector3(enemy.transform.position.x, 1.5f, enemy.transform.position.z));
 
         enemies.Add(enemy);
         return true;

@@ -89,20 +89,10 @@ public class Bullet : MonoBehaviour
             return;
         }
 
-        if(ownerSide == OwnerSide.Player)
-        {
-            Enemy enemy = collider.GetComponentInParent<Enemy>();
-            if (enemy.IsDead)
-                return;
-            enemy.OnBulletHited(Damage);
-        }
-        else
-        {
-            Player player = collider.GetComponentInParent<Player>();
-            if (player.IsDead)
-                return;
-            player.OnBulletHited(Damage);
-        }
+        Actor actor = collider.GetComponentInParent<Actor>();
+        if (actor && actor.IsDead)
+            return;
+        actor.OnBulletHited(actor, Damage);
 
         // 콜리더 부하 방지
         Collider myCollider = GetComponentInChildren<Collider>();
@@ -110,6 +100,9 @@ public class Bullet : MonoBehaviour
 
         Hited = true;
         NeedMove = false;
+
+        GameObject go = SystemManager.Instance.EffectManager.GenerateEffect(1, transform.position);
+        Disappear();
     }
 
     private void OnTriggerEnter(Collider other)

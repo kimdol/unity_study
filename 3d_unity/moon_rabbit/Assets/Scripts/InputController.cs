@@ -40,25 +40,31 @@ public class InputController : MonoBehaviour
 
         SystemManager.Instance.Hero.ProcessInput(moveDirection);
 
-
-        Vector3 moveDirectionArm = Vector3.zero;
-        Vector3 moveDirectionArm2 = new Vector3(0.09f, 0.26f, -0.46f);
-
-        if (Input.GetKey(KeyCode.R))
-        {
-            moveDirectionArm.z = 115.02f;
-            moveDirectionArm2.Set(0.12f, 0.38f, -0.46f);
-        }
-
-        
-        SystemManager.Instance.Hero.ProcessArmInput(moveDirectionArm, moveDirectionArm2);
     }
 
     void UpdateMouse()
     {
+        Vector3 moveDirectionArm = Vector3.zero; // rotation
+        Vector3 moveDirectionArm2 = new Vector3(0.09f, 0.26f, -0.46f); // pos
+
+        Vector3 moveArmSkill = new Vector3(33.51f, 90.0f, 0.0f);
+        Vector3 moveArmSkill2 = new Vector3(0.39f, -0.06f, -3.22f);
+
+        if (Input.GetMouseButton(0))
+        {
+            moveDirectionArm.z = 115.02f;
+            moveDirectionArm2.Set(0.12f, 0.38f, -0.46f);
+
+            moveArmSkill.Set(-30.04f, 90.0f, 0.0f);
+            moveArmSkill2.Set(0.39f, 0.8f, -3.22f);
+        }
+        
         if (Input.GetMouseButtonDown(0))
         {
             SystemManager.Instance.Hero.Fire();
         }
+
+        SystemManager.Instance.Hero.ProcessArmInput(moveDirectionArm, moveDirectionArm2,
+            moveArmSkill, moveArmSkill2);
     }
 }

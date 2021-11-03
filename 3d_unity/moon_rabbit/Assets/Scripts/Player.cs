@@ -20,6 +20,9 @@ public class Player : Actor
     Transform mArmTransform;
 
     [SerializeField]
+    Transform mArmSkillTransform;
+
+    [SerializeField]
     Transform FireTransform;
 
     [SerializeField]
@@ -31,11 +34,12 @@ public class Player : Actor
 
     // arm
     Quaternion mMoveArm = Quaternion.identity;
-    Vector3 mAgle = Vector3.zero;
     Vector3 mArmPos = Vector3.zero;
+    Quaternion mMoveArmSkill = Quaternion.identity;
+    Vector3 mArmPosSkill = Vector3.zero;
     // 공중부양
-    float mDelta = 0.0015f;
-    float mLevitSpeed = 2.0f;
+    float mDelta = 0.003f;
+    float mLevitSpeed = 3.0f;
 
     protected override void UpdateActor()
     {
@@ -93,11 +97,18 @@ public class Player : Actor
     {
         mArmTransform.rotation = mMoveArm;
         mArmTransform.localPosition = mArmPos;
+
+        mArmSkillTransform.rotation = mMoveArmSkill;
+        mArmSkillTransform.localPosition = mArmPosSkill;
+
     }
-    public void ProcessArmInput(Vector3 moveAngle, Vector3 moveDirection)
+    public void ProcessArmInput(Vector3 moveAngle, Vector3 moveDirection, Vector3 skillAngle, Vector3 skillMoveDirection)
     {
         mMoveArm.eulerAngles = moveAngle;
         mArmPos = moveDirection;
+
+        mMoveArmSkill.eulerAngles = skillAngle;
+        mArmPosSkill = skillMoveDirection;
     }
     // 공중부양
     void Levitating()
@@ -117,7 +128,7 @@ public class Player : Actor
     }
     public override void OnCrash(Actor attacker, int damage)
     {
-        OnCrash(attacker, damage);
+        base.OnCrash(attacker, damage);
     }
 
     public void Fire()
@@ -125,6 +136,6 @@ public class Player : Actor
         GameObject go = Instantiate(Bullet);
 
         Bullet bullet = go.GetComponent<Bullet>();
-        bullet.Fire(OwnerSide.Player, FireTransform.position, FireTransform.right, BulletSpeed, Damage);
+        bullet.Fire(OwnerSide.Player, FireTransform.position, FireTransform.right + FireTransform.up, BulletSpeed, Damage);
     }
 }
