@@ -38,6 +38,12 @@ public class Enemy : Actor
     [SerializeField]
     int GamePoint = 1;
 
+    public string FilePath
+    {
+        get;
+        set;
+    }
+
     protected override void UpdateActor()
     {
         switch (CurrentState)
@@ -136,7 +142,7 @@ public class Enemy : Actor
     {
         base.OnDead(killer);
         SystemManager.Instance.GamePointAccumulator.Accumulate(GamePoint);
+        SystemManager.Instance.EnemyManager.RemoveEnemy(this);
         CurrentState = State.Dead;
-        Destroy(gameObject);
     }
 }

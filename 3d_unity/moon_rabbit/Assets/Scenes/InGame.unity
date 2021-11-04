@@ -292,6 +292,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyFactory: {fileID: 1460871020}
+  enemyFiles:
+  - filePath: Prefabs/Enemy
+    cacheCount: 5
 --- !u!4 &557604493
 Transform:
   m_ObjectHideFlags: 0
@@ -337,6 +340,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1512054209}
   effectManager: {fileID: 1125247718}
+  enemyManager: {fileID: 557604492}
+  bulletManager: {fileID: 1299883936}
 --- !u!4 &582339343
 Transform:
   m_ObjectHideFlags: 0
@@ -483,10 +488,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf8db963b2bf60c47ab9b7c6f2c7bc49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  effectPrefabs:
-  - {fileID: 100008, guid: 8f611da60097c85438a2947021f045cf, type: 3}
-  - {fileID: 100014, guid: a57a6829db3568c4d9bdc37e9e63c017, type: 3}
-  - {fileID: 100006, guid: 28ccd38a41e256a4e8fea96f5a8d039d, type: 3}
+  effectFiles:
+  - filePath: Prefabs/WFX_Explosion_Simple
+    cacheCount: 7
+  - filePath: Prefabs/WFX_Explosion_Small
+    cacheCount: 7
+  - filePath: Prefabs/WFX_Explosion_StarSmoke
+    cacheCount: 7
 --- !u!4 &1125247719
 Transform:
   m_ObjectHideFlags: 0
@@ -500,6 +508,52 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1299883935
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1299883937}
+  - component: {fileID: 1299883936}
+  m_Layer: 0
+  m_Name: BulletManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1299883936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1299883935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d48cc358d5b1b547839d2b730a64a10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletFiles:
+  - filePath: Prefabs/Bullet
+    cacheCount: 10
+--- !u!4 &1299883937
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1299883935}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1460871019
 GameObject:
@@ -659,7 +713,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 672122192238624638, guid: 8318e30e36ec58f4083ff79c88a2d717, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.42
+      value: 0.67
       objectReference: {fileID: 0}
     - target: {fileID: 672122192238624638, guid: 8318e30e36ec58f4083ff79c88a2d717, type: 3}
       propertyPath: m_LocalScale.z

@@ -26,6 +26,11 @@ public class Bullet : MonoBehaviour
 
     [SerializeField]
     int Damage = 1;
+    public string FilePath
+    {
+        get;
+        set;
+    }
 
 
     // Start is called before the first frame update
@@ -101,7 +106,7 @@ public class Bullet : MonoBehaviour
         Hited = true;
         NeedMove = false;
 
-        GameObject go = SystemManager.Instance.EffectManager.GenerateEffect(1, transform.position);
+        GameObject go = SystemManager.Instance.EffectManager.GenerateEffect(EffectManager.BulletDisappearFxIndex, transform.position);
         Disappear();
     }
 
