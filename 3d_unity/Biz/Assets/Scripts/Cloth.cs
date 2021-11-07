@@ -13,6 +13,7 @@ public class Cloth : MonoBehaviour
     // 움직이게 하는 플래그
     public bool mSlowMoveFlag = false;
     public bool mFastMoveFlag = false;
+    
 
 
     // Start is called before the first frame update

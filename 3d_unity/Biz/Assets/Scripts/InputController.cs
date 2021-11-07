@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class InputController : MonoBehaviour
 {
+    const float DRAGCRITERION = 1.0f;
     GameObject mTouchObj;
     Vector3 mMousePos = Vector3.zero;
     public bool mDragingFlag = false;
@@ -28,9 +29,10 @@ public class InputController : MonoBehaviour
         {
             // 터치가 이끌리는 곳으로 오브젝트가 쫒아가라
             mMousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            mMousePos.z = Cloth.ZPOS - 0.1f;
+            mMousePos.z = Cloth.ZPOS - DRAGCRITERION; // 드래그 판정 조절
             mTouchObj.GetComponent<Cloth>().InputMoveVector(mMousePos);
             mDragingFlag = true;
+            
         }
         else
         {
@@ -47,7 +49,7 @@ public class InputController : MonoBehaviour
 
         if (hit.collider != null)
         {
-            if (hit.collider.gameObject.GetComponentInParent<Transform>().parent.gameObject.name == "Clothes")
+            if (hit.collider.gameObject.GetComponentInParent<Transform>().parent.gameObject.name.Contains("Clothes"))
             {
                 touchObj = hit.collider.gameObject;
                 return true;

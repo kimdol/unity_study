@@ -5,68 +5,77 @@ using UnityEngine;
 public class ClothesManager : MonoBehaviour
 {
     [SerializeField]
-    InputController inputctr; // 실험용
+    PrefabCacheData[] ClothesFiles;
 
-    [SerializeField]
-    GameObject Clothes; // 실험용
+    Dictionary<string, GameObject> FileCache = new Dictionary<string, GameObject>();
 
-
-    [SerializeField]
-    Transform mRoomStandardTr;
-
-    Vector3 mRoomStandardPos;
+    public int Clothes01Index = 0;
 
     // Start is called before the first frame update
     void Start()
     {
-        mRoomStandardPos = mRoomStandardTr.position;
+        Prepare();
+        Vector3 a = new Vector3(0, 0, 0);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!inputctr.mDragingFlag)
-        {
-            RoomSort(Clothes);
-        }
+        
     }
 
-    // 제자리 정렬
-    void RoomSort(GameObject clothes)
+    public GameObject GenerateClothes(int index, Vector3 position)
     {
-        Cloth[] allChildren = clothes.GetComponentsInChildren<Cloth>();
-        
-        foreach(Cloth child in allChildren)
+        if (index < 0 || index >= ClothesFiles.Length)
         {
-            Vector3 roomPos = mRoomStandardPos;
-            switch (child.name)
-            {
-                case "Farmer":
-                    child.SlowMoveVector(roomPos);
-                    break;
-                case "Carpenter":
-                    roomPos.x += 2.5f;
-                    child.SlowMoveVector(roomPos);
-                    break;
-                case "Police":
-                    roomPos.x += 5.0f;
-                    child.SlowMoveVector(roomPos);
-                    break;
-                case "Doctor":
-                    roomPos.y -= 2.89f;
-                    child.SlowMoveVector(roomPos);
-                    break;
-                case "Cook":
-                    roomPos.y -= 2.89f;
-                    roomPos.x += 2.5f;
-                    child.SlowMoveVector(roomPos);
-                    break;
-                case "Singer":
-                    roomPos.y -= 2.89f;
-                    roomPos.x += 5.0f;
-                    child.SlowMoveVector(roomPos);
-                    break;
-            }
+            Debug.LogError("GenerateEffect error! out of range! index = " + index);
+            return null;
         }
+
+        string filePath = ClothesFiles[index].filePath;
+        GameObject go = SystemManager.Instance.ClothesCacheSystem.Archive(filePath);
+        go.transform.position = position;
+
+        Clothes clothes = go.GetComponent<Clothes>();
+        clothes.FilePath = filePath;
+
+        return go;
+    }
+
+    public GameObject Load(string resourcePath)
+    {
+        GameObject go = null;
+
+        if (FileCache.ContainsKey(resourcePath))   // 캐시 확인
+        {
+            go = FileCache[resourcePath];
+        }
+        else
+        {
+            // 캐시에 없으므로 로드
+            go = Resources.Load<GameObject>(resourcePath);
+            if (!go)
+            {
+                Debug.LogError("Load error! path = " + resourcePath);
+                return null;
+            }
+            // 로드 후 캐시에 적재
+            FileCache.Add(resourcePath, go);
+        }
+
+        return go;
+    }
+    public void Prepare()
+    {
+        for (int i = 0; i < ClothesFiles.Length; i++)
+        {
+            GameObject go = Load(ClothesFiles[i].filePath);
+            SystemManager.Instance.ClothesCacheSystem.GenerateCache(ClothesFiles[i].filePath, go, ClothesFiles[i].cacheCount);
+        }
+    }
+    public bool RemoveClothes(Clothes clothes)
+    {
+        SystemManager.Instance.ClothesCacheSystem.Restore(clothes.FilePath, clothes.gameObject);
+        return true;
     }
 }
