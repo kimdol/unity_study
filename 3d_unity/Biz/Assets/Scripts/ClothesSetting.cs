@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class ClothesSetting : MonoBehaviour
 {
-    bool a = true;
+    GameObject go = null;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -14,17 +15,16 @@ public class ClothesSetting : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (a)
-        {
-            Setting();
-            a = false;
-        }
         
     }
 
-    // 옷들 세팅
-    public void Setting()
+    // 페이지에 따른 옷들 세팅
+    public void Setting(int page)
     {
-        SystemManager.Instance.ClothesManager.GenerateClothes(SystemManager.Instance.ClothesManager.Clothes01Index, new Vector3(0, 0, 0));
+        if (go != null)
+        {
+            SystemManager.Instance.ClothesManager.RemoveClothes(go.GetComponent<Clothes>());
+        }
+        go = SystemManager.Instance.ClothesManager.GenerateClothes(page, new Vector3(0, 0, 0));
     }
 }

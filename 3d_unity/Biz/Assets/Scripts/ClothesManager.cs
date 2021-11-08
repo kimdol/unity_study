@@ -10,6 +10,7 @@ public class ClothesManager : MonoBehaviour
     Dictionary<string, GameObject> FileCache = new Dictionary<string, GameObject>();
 
     public int Clothes01Index = 0;
+    public int Clothes02Index = 1;
 
     // Start is called before the first frame update
     void Start()
@@ -31,11 +32,11 @@ public class ClothesManager : MonoBehaviour
             Debug.LogError("GenerateEffect error! out of range! index = " + index);
             return null;
         }
-
+        
         string filePath = ClothesFiles[index].filePath;
         GameObject go = SystemManager.Instance.ClothesCacheSystem.Archive(filePath);
         go.transform.position = position;
-
+        
         Clothes clothes = go.GetComponent<Clothes>();
         clothes.FilePath = filePath;
 

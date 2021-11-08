@@ -15,6 +15,17 @@ public class SystemManager : MonoBehaviour
     }
 
     [SerializeField]
+    Player player;
+
+    public Player Mel
+    {
+        get
+        {
+            return player;
+        }
+    }
+
+    [SerializeField]
     ClothesManager clothesManager;
     public ClothesManager ClothesManager
     {
@@ -45,12 +56,32 @@ public class SystemManager : MonoBehaviour
     }
 
     [SerializeField]
+    GamePointAccumulator gamePointAccumulator;
+    public GamePointAccumulator GamePointAccumulator
+    {
+        get
+        {
+            return gamePointAccumulator;
+        }
+    }
+
+    [SerializeField]
     ClothesSetting clothesSetting;
     public ClothesSetting ClothesSetting
     {
         get
         {
             return clothesSetting;
+        }
+    }
+
+    [SerializeField]
+    ButtonSystem buttonSystem;
+    public ButtonSystem ButtonSystem
+    {
+        get
+        {
+            return buttonSystem;
         }
     }
 

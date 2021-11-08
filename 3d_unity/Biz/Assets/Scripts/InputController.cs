@@ -9,6 +9,8 @@ public class InputController : MonoBehaviour
     Vector3 mMousePos = Vector3.zero;
     public bool mDragingFlag = false;
 
+    GameObject mClickButtonObj;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +21,7 @@ public class InputController : MonoBehaviour
     void Update()
     {
         DragAndDrop();
+        ButtonClick();
     }
 
     // 드래그 앤 드롭
@@ -40,7 +43,7 @@ public class InputController : MonoBehaviour
         }
 
     }
-    // 그 터치가 오브젝트이면 1, 아니면 0
+    // 그 터치가 오브젝트이면 1, 아니면 0(드래그 앤 드롭전용)
     bool TouchIsObj(out GameObject touchObj)
     {
         RaycastHit hit;
@@ -50,6 +53,40 @@ public class InputController : MonoBehaviour
         if (hit.collider != null)
         {
             if (hit.collider.gameObject.GetComponentInParent<Transform>().parent.gameObject.name.Contains("Clothes"))
+            {
+                touchObj = hit.collider.gameObject;
+                return true;
+            }
+        }
+
+        touchObj = null;
+        return false;
+    }
+    
+    // 버튼 클릭 시 이벤트 발생
+    void ButtonClick()
+    {
+        if (Input.GetMouseButtonDown(0) && ClickIsButton(out mClickButtonObj))
+        {
+            if (mClickButtonObj.name.Contains("LB"))
+            {
+                SystemManager.Instance.ButtonSystem.PageAccumulator(-1);
+            }
+            else
+            {
+                SystemManager.Instance.ButtonSystem.PageAccumulator(1);
+            }
+        }
+    }
+    bool ClickIsButton(out GameObject touchObj)
+    {
+        RaycastHit hit;
+        Ray touchray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        Physics.Raycast(touchray, out hit);
+
+        if (hit.collider != null)
+        {
+            if (hit.collider.name.Contains("LB") || hit.collider.name.Contains("RB"))
             {
                 touchObj = hit.collider.gameObject;
                 return true;
