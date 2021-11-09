@@ -70,11 +70,11 @@ public class InputController : MonoBehaviour
         {
             if (mClickButtonObj.name.Contains("LB"))
             {
-                SystemManager.Instance.ButtonSystem.PageAccumulator(-1);
+                SystemManager.Instance.GetCurrentSceneMain<InGameSceneMain>().ButtonSystem.PageAccumulator(-1);
             }
             else
             {
-                SystemManager.Instance.ButtonSystem.PageAccumulator(1);
+                SystemManager.Instance.GetCurrentSceneMain<InGameSceneMain>().ButtonSystem.PageAccumulator(1);
             }
         }
     }

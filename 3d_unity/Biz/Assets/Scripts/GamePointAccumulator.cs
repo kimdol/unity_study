@@ -20,7 +20,7 @@ public class GamePointAccumulator : MonoBehaviour
     public bool IsItCorrect()
     {
         // 밑의 동작의 수월함을 위한 예외처리
-        GameObject go = SystemManager.Instance.Mel.CrashedObject();
+        GameObject go = SystemManager.Instance.GetCurrentSceneMain<InGameSceneMain>().Mel.CrashedObject();
         if (!go)
         {
             Debug.Log("Crashed Gameobject is none");
@@ -28,7 +28,7 @@ public class GamePointAccumulator : MonoBehaviour
         }
         // "타이틀 이름"과 "player와 부딪힌 오브젝트 이름"을 비교 후
         // 맞으면 true, 틀리면 false
-        if (SystemManager.Instance.JobNameTitle.GetComponent<TextMesh>().text.Contains(go.name))
+        if (SystemManager.Instance.GetCurrentSceneMain<InGameSceneMain>().JobNameTitle.GetComponent<TextMesh>().text.Contains(go.name))
         {
             return true;
         }

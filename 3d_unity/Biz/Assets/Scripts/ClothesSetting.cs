@@ -23,8 +23,8 @@ public class ClothesSetting : MonoBehaviour
     {
         if (go != null)
         {
-            SystemManager.Instance.ClothesManager.RemoveClothes(go.GetComponent<Clothes>());
+            SystemManager.Instance.GetCurrentSceneMain<InGameSceneMain>().ClothesManager.RemoveClothes(go.GetComponent<Clothes>());
         }
-        go = SystemManager.Instance.ClothesManager.GenerateClothes(page, new Vector3(0, 0, 0));
+        go = SystemManager.Instance.GetCurrentSceneMain<InGameSceneMain>().ClothesManager.GenerateClothes(page, new Vector3(0, 0, 0));
     }
 }

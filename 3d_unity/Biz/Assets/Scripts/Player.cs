@@ -26,7 +26,7 @@ public class Player : MonoBehaviour
         transform.GetChild(1).gameObject.SetActive(false);
         transform.GetChild(2).gameObject.SetActive(false);
 
-        if (SystemManager.Instance.GamePointAccumulator.IsItCorrect())      // 정답일 경우 웃음
+        if (SystemManager.Instance.GetCurrentSceneMain<InGameSceneMain>().GamePointAccumulator.IsItCorrect())      // 정답일 경우 웃음
         {
             transform.GetChild(0).gameObject.SetActive(false);
             transform.GetChild(1).gameObject.SetActive(true);

@@ -34,7 +34,7 @@ public class ClothesManager : MonoBehaviour
         }
         
         string filePath = ClothesFiles[index].filePath;
-        GameObject go = SystemManager.Instance.ClothesCacheSystem.Archive(filePath);
+        GameObject go = SystemManager.Instance.GetCurrentSceneMain<InGameSceneMain>().ClothesCacheSystem.Archive(filePath);
         go.transform.position = position;
         
         Clothes clothes = go.GetComponent<Clothes>();
@@ -71,12 +71,12 @@ public class ClothesManager : MonoBehaviour
         for (int i = 0; i < ClothesFiles.Length; i++)
         {
             GameObject go = Load(ClothesFiles[i].filePath);
-            SystemManager.Instance.ClothesCacheSystem.GenerateCache(ClothesFiles[i].filePath, go, ClothesFiles[i].cacheCount);
+            SystemManager.Instance.GetCurrentSceneMain<InGameSceneMain>().ClothesCacheSystem.GenerateCache(ClothesFiles[i].filePath, go, ClothesFiles[i].cacheCount);
         }
     }
     public bool RemoveClothes(Clothes clothes)
     {
-        SystemManager.Instance.ClothesCacheSystem.Restore(clothes.FilePath, clothes.gameObject);
+        SystemManager.Instance.GetCurrentSceneMain<InGameSceneMain>().ClothesCacheSystem.Restore(clothes.FilePath, clothes.gameObject);
         return true;
     }
 }

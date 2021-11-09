@@ -14,106 +14,51 @@ public class SystemManager : MonoBehaviour
         }
     }
 
-    [SerializeField]
-    Player player;
-
-    public Player Mel
+    BaseSceneMain currentSceneMain;
+    public BaseSceneMain CurrentSceneMain
     {
-        get
+        set
         {
-            return player;
+            currentSceneMain = value;
         }
     }
 
-    [SerializeField]
-    ClothesManager clothesManager;
-    public ClothesManager ClothesManager
-    {
-        get
-        {
-            return clothesManager;        
-        }
-    }
-
-    [SerializeField]
-    JobNameTitle jabnameTitle;
-    public JobNameTitle JobNameTitle
-    {
-        get
-        {
-            return jabnameTitle;
-        }
-    }
-
-    [SerializeField]
-    InputController inputContrller;
-    public InputController InputController
-    {
-        get
-        {
-            return inputContrller;
-        }
-    }
-
-    [SerializeField]
-    GamePointAccumulator gamePointAccumulator;
-    public GamePointAccumulator GamePointAccumulator
-    {
-        get
-        {
-            return gamePointAccumulator;
-        }
-    }
-
-    [SerializeField]
-    ClothesSetting clothesSetting;
-    public ClothesSetting ClothesSetting
-    {
-        get
-        {
-            return clothesSetting;
-        }
-    }
-
-    [SerializeField]
-    ButtonSystem buttonSystem;
-    public ButtonSystem ButtonSystem
-    {
-        get
-        {
-            return buttonSystem;
-        }
-    }
-
-    PrefabCacheSystem clothesCacheSystem = new PrefabCacheSystem();
-    public PrefabCacheSystem ClothesCacheSystem
-    {
-        get
-        {
-            return clothesCacheSystem;
-        }
-    }
+    
 
     private void Awake()
     {
+        // 유일하게 존재할 수 있도록 에러 처리
         if (instance != null)
         {
+            Debug.LogError("SystemManager is initialized twice!");
             Destroy(gameObject);
             return;
         }
+
         instance = this;
+
+        // Scene 이동간에 사라지지 않도록 처리
+        DontDestroyOnLoad(gameObject);
     }
 
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        BaseSceneMain baseSceneMain = GameObject.FindObjectOfType<BaseSceneMain>();
+        SystemManager.Instance.CurrentSceneMain = baseSceneMain;
+
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    public T GetCurrentSceneMain<T>()
+        where T : BaseSceneMain
+    {
+        return currentSceneMain as T;
     }
 }

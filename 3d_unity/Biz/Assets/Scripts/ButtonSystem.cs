@@ -34,7 +34,7 @@ public class ButtonSystem : MonoBehaviour
     // 페이지에 따른 버튼과 실제 페이지가 나타남
     void ButtonAppear()
     {
-        SystemManager.Instance.ClothesSetting.Setting(mPage);
+        SystemManager.Instance.GetCurrentSceneMain<InGameSceneMain>().ClothesSetting.Setting(mPage);
 
         transform.GetChild(mPage).gameObject.SetActive(true);
         transform.GetChild(mPrevPage).gameObject.SetActive(false);
