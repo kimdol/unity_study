@@ -6,8 +6,6 @@ public class TitleSceneMain : BaseSceneMain
 {
     public void OnStartButton()
     {
-        Debug.Log("OnstartButton");
-
         SceneController.Instance.LoadScene(SceneNameConstants.LoadingScene);
     }
 }

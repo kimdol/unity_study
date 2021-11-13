@@ -103,21 +103,21 @@ public class InGameSceneMain : BaseSceneMain
     }
 
     [SerializeField]
-    ItemBoxManager itemBoxManager;
-    public ItemBoxManager ItemBoxManager
+    CollectionManager collectionManager;
+    public CollectionManager CollectionManager
     {
         get
         {
-            return itemBoxManager;
+            return collectionManager;
         }
     }
 
-    PrefabCacheSystem itemBoxCacheSystem = new PrefabCacheSystem();
-    public PrefabCacheSystem ItemBoxCacheSystem
+    PrefabCacheSystem collectionCacheSystem = new PrefabCacheSystem();
+    public PrefabCacheSystem CollectionCacheSystem
     {
         get
         {
-            return itemBoxCacheSystem;
+            return collectionCacheSystem;
         }
     }
 
@@ -155,6 +155,13 @@ public class InGameSceneMain : BaseSceneMain
                 /* Game Start!! */
             }
         }
+    }
+    public void GotoTitleScene()
+    {
+        // 시스템 매니저를 파괴
+        DestroyImmediate(SystemManager.Instance.gameObject);
+        SceneController.Instance.LoadSceneImmediate(SceneNameConstants.TitleScene);
+
     }
 
 }

@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class GamePointAccumulator : MonoBehaviour
 {
+    [SerializeField]
+    GameObject CompleteBotton;
+
+    private bool mComplete = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -36,5 +41,22 @@ public class GamePointAccumulator : MonoBehaviour
         {
             return false;
         }
+    }
+    public void SuccessOrNot(bool success)
+    {
+        if (success)
+        {
+            mComplete = true;
+        }
+        else
+        {
+            mComplete = false;
+        }
+    }
+    public void OnCompleteButton()
+    {
+        CompleteBotton.SetActive(false);
+        GameEndPanel gameEndPanel = PanelManager.GetPanel(typeof(GameEndPanel)) as GameEndPanel;
+        gameEndPanel.ShowGameEnd(mComplete);
     }
 }

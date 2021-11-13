@@ -23,7 +23,7 @@ public class Clothes : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!SystemManager.Instance.GetCurrentSceneMain<InGameSceneMain>().InputController.mDragingFlag)
+        if (!SystemManager.Instance.GetCurrentSceneMain<InGameSceneMain>().InputController.DragingFlag)
         {
             RoomSort();
         }

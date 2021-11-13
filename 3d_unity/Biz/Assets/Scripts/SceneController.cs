@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class SceneNameConstants
 {
-    public static string TitleScene = "TitleSScene";
+    public static string TitleScene = "TitleScene";
     public static string LoadingScene = "LoadingScene";
     public static string InGame = "InGame";
 }
@@ -68,19 +68,13 @@ public class SceneController : MonoBehaviour
         SceneManager.LoadScene(sceneName);
     }
 
-    /// <summary>
-    /// 이전 Scene을 Unload 하고 로딩
-    /// </summary>
-    /// <param name="sceneName">로딩할 Scene 이름</param>
+    // 이전 Scene을 Unload 하고 로딩
     public void LoadScene(string sceneName)
     {
         StartCoroutine(LoadSceneAsync(sceneName, LoadSceneMode.Single));
     }
 
-    /// <summary>
-    /// 이전 Scene의 Unload 없이 로딩
-    /// </summary>
-    /// <param name="sceneName">로딩할 Scene 이름</param>
+    // 이전 Scene의 Unload 없이 로딩
     public void LoadSceneAdditive(string sceneName)
     {
         StartCoroutine(LoadSceneAsync(sceneName, LoadSceneMode.Additive));

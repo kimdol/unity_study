@@ -30,11 +30,13 @@ public class Player : MonoBehaviour
         {
             transform.GetChild(0).gameObject.SetActive(false);
             transform.GetChild(1).gameObject.SetActive(true);
+            SystemManager.Instance.GetCurrentSceneMain<InGameSceneMain>().GamePointAccumulator.SuccessOrNot(true);
         }
         else                                                                // 오답일 경우 찡그림
         {
             transform.GetChild(0).gameObject.SetActive(false);
             transform.GetChild(2).gameObject.SetActive(true);
+            SystemManager.Instance.GetCurrentSceneMain<InGameSceneMain>().GamePointAccumulator.SuccessOrNot(false);
         }
     }
     // 나와 부딪힌 게임 오브젝트를 반환함
