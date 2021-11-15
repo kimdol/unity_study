@@ -10,6 +10,13 @@ public class NextScrollManager : MonoBehaviour, IBeginDragHandler, IDragHandler,
 
     const int SIZE = 9;
     const float NEXT = 0.168f;
+    public float Next
+    {
+        get
+        {
+            return NEXT;
+        }
+    }
     float[] pos = new float[SIZE];
 
     // Start is called before the first frame update
@@ -23,7 +30,7 @@ public class NextScrollManager : MonoBehaviour, IBeginDragHandler, IDragHandler,
     // 드래그 시작
     public void OnBeginDrag(PointerEventData eventData)
     {
-        Debug.Log(eventData.position);
+        
     }
     // 드래그 중
     public void OnDrag(PointerEventData eventData)

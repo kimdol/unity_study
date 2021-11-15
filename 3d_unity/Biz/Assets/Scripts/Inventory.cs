@@ -114,6 +114,17 @@ public class CollectionFilePath
 
         return imageCache[imageFilePath];
     }
+    public List<Sprite> GetAllSprite()
+    {
+        List<Sprite> sprite = new List<Sprite>();
+
+        foreach(var sp in imageCache)
+        {
+            sprite.Add(sp.Value);
+        }
+
+        return sprite;
+    }
     public void Load(string resourcePath)
     {
         Sprite Sp = null;

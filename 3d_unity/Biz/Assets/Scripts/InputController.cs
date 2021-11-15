@@ -93,7 +93,6 @@ public class InputController : MonoBehaviour
     }
 
 
-
     public delegate bool FunctionPointer(RaycastHit hit);
     bool ButtonRecognition(RaycastHit hit)
     {

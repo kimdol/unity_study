@@ -156,6 +156,11 @@ public class InGameSceneMain : BaseSceneMain
             }
         }
     }
+    public void OnClothesButton()
+    {
+        SceneController.Instance.LoadScene(SceneNameConstants.CollectionScene);
+    }
+
     public void GotoTitleScene()
     {
         // 시스템 매니저를 파괴

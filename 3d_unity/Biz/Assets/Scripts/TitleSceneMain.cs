@@ -8,4 +8,9 @@ public class TitleSceneMain : BaseSceneMain
     {
         SceneController.Instance.LoadScene(SceneNameConstants.LoadingScene);
     }
+    public void OnClothesButton()
+    {
+        Inventory.Instance.Prepare();
+        SceneController.Instance.LoadScene(SceneNameConstants.CollectionScene);
+    }
 }

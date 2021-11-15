@@ -8,6 +8,7 @@ public class SceneNameConstants
     public static string TitleScene = "TitleScene";
     public static string LoadingScene = "LoadingScene";
     public static string InGame = "InGame";
+    public static string CollectionScene = "CollectionScene";
 }
 
 public class SceneController : MonoBehaviour
@@ -87,7 +88,7 @@ public class SceneController : MonoBehaviour
         while (!asyncOperation.isDone)
             yield return null;
 
-        Debug.Log("LoadSceneAsync is complete");
+        // Debug.Log("LoadSceneAsync is complete");
     }
 
     public void OnActiveSceneChanaged(Scene scene0, Scene scene1)
@@ -100,7 +101,7 @@ public class SceneController : MonoBehaviour
         //Debug.Log("OnSceneLoaded is called! scene = " + scene.name + ", loadSceneMode = " + loadSceneMode.ToString());
 
         BaseSceneMain baseSceneMain = GameObject.FindObjectOfType<BaseSceneMain>();
-        Debug.Log("OnSceneLoaded ! baseSceneMain.name = " + baseSceneMain.name);
+        // Debug.Log("OnSceneLoaded ! baseSceneMain.name = " + baseSceneMain.name);
         SystemManager.Instance.CurrentSceneMain = baseSceneMain;
 
     }

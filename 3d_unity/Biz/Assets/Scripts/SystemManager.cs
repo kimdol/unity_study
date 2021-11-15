@@ -23,7 +23,7 @@ public class SystemManager : MonoBehaviour
         }
     }
 
-    
+
 
     private void Awake()
     {
