@@ -11,6 +11,7 @@ public class switch_scenes : MonoBehaviour {
 		Button b = GetComponent<Button> ();
 		if (b != null && sceneName != "")
 		{
+			// 주석
 			//b.onClick.AddListener(() => {Application.LoadLevel(sceneName);});
 		}
 	}
