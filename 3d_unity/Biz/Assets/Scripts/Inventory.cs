@@ -26,6 +26,7 @@ public class CollectionFilePath
         public static CollectionFilePath Marine = new CollectionFilePath("UI/SuccessGame/Collection/Marine", "Prefabs/Etc/Collection/MarineCollection");
         public static CollectionFilePath Police = new CollectionFilePath("UI/SuccessGame/Collection/Police", "Prefabs/Etc/Collection/PoliceCollection");
         public static CollectionFilePath Singer = new CollectionFilePath("UI/SuccessGame/Collection/Singer", "Prefabs/Etc/Collection/SingerCollection");
+        public static CollectionFilePath Firefighter = new CollectionFilePath("UI/SuccessGame/Collection/Firefighter", "Prefabs/Etc/Collection/SingerCollection");
     }
 
     private Dictionary<CollectionFilePath, int> inventoryCache = new Dictionary<CollectionFilePath, int>();
@@ -93,7 +94,7 @@ public class CollectionFilePath
         if (inventoryCache.ContainsKey(filePath))
         {
             inventoryCache[filePath] += count;
-            Debug.Log("Already cache generated! filePath = " + filePath + " + " + inventoryCache[filePath]);
+            //Debug.Log("Already cache generated! filePath = " + filePath + " + " + inventoryCache[filePath]);
         }
         else
         {
@@ -131,7 +132,7 @@ public class CollectionFilePath
 
         if (imageCache.ContainsKey(resourcePath))   // 캐시 확인
         {
-            Debug.Log("Already Sprite Key");
+            //Debug.Log("Already Sprite Key");
         }
         else
         {

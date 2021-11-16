@@ -51,7 +51,7 @@ public class GamePointAccumulator : MonoBehaviour
                         break;
                     case "Firefighter":
                     case "家规包":
-                        //Inventory.Instance.GenerateCache(Inventory.CollectionConstants.Firefighter, 1);
+                        Inventory.Instance.GenerateCache(Inventory.CollectionConstants.Firefighter, 1);
                         break;
                     case "Carpenter":
                     case "格荐":
