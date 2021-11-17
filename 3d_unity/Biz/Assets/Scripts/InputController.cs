@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class InputController : MonoBehaviour
 {
+    [SerializeField]
+    GameObject CompleteButton;
+
     const float DRAGCRITERION = 1.0f;
     GameObject mTouchObj;
     Vector3 mMousePos = Vector3.zero;
@@ -48,11 +51,14 @@ public class InputController : MonoBehaviour
             mMousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             mMousePos.z = Cloth.ZPOS - DRAGCRITERION; // 드래그 판정 조절
             mTouchObj.GetComponent<Cloth>().InputMoveVector(mMousePos);
+            CompleteButton.SetActive(false);
+
             mDragingFlag = true;
 
         }
         else
         {
+            CompleteButton.SetActive(true);
             mDragingFlag = false;
         }
 
