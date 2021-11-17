@@ -58,7 +58,11 @@ public class InputController : MonoBehaviour
         }
         else
         {
-            CompleteButton.SetActive(true);
+            if (!SystemManager.Instance.GetCurrentSceneMain<InGameSceneMain>().GamePointAccumulator.Complete)
+            {
+                CompleteButton.SetActive(true);
+            }
+            
             mDragingFlag = false;
         }
 

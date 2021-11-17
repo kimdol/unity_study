@@ -6,8 +6,16 @@ public class GamePointAccumulator : MonoBehaviour
 {
     [SerializeField]
     GameObject CompleteBotton;
-
     private bool mComplete = false;
+    public bool Complete
+    {
+        get
+        {
+            return mComplete;
+        }
+    }
+
+    private bool mMissionClear = false;
     private bool mAlreadyDone = false;
 
     // Start is called before the first frame update
@@ -95,18 +103,19 @@ public class GamePointAccumulator : MonoBehaviour
     {
         if (success)
         {
-            mComplete = true;
+            mMissionClear = true;
         }
         else
         {
-            mComplete = false;
+            mMissionClear = false;
         }
     }
     public void OnCompleteButton()
     {
         Inventory.Instance.Prepare();
+        mComplete = true;
         CompleteBotton.SetActive(false);
         GameEndPanel gameEndPanel = PanelManager.GetPanel(typeof(GameEndPanel)) as GameEndPanel;
-        gameEndPanel.ShowGameEnd(mComplete);
+        gameEndPanel.ShowGameEnd(mMissionClear);
     }
 }
