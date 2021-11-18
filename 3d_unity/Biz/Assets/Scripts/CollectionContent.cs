@@ -4,6 +4,13 @@ using UnityEngine;
 using UnityEngine.UI;
 public class CollectionContent : MonoBehaviour
 {
+    private void Awake()
+    {
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            transform.GetChild(i).transform.GetChild(1).gameObject.SetActive(false);
+        }
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -13,7 +20,9 @@ public class CollectionContent : MonoBehaviour
         {
             if (sp.Count != i)
             {
-                transform.GetChild(i).transform.GetChild(1).GetComponent<Text>().text = KrName(sp[i].name);
+                transform.GetChild(i).transform.GetChild(0).gameObject.SetActive(false);
+                transform.GetChild(i).transform.GetChild(1).gameObject.SetActive(true);
+                transform.GetChild(i).transform.GetChild(2).GetComponent<Text>().text = KrName(sp[i].name);
                 transform.GetChild(i).GetComponent<Image>().sprite = sp[i];
             }
             else
@@ -26,7 +35,7 @@ public class CollectionContent : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     // 한글 이름 찾기
