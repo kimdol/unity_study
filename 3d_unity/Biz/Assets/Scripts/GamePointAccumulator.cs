@@ -18,6 +18,20 @@ public class GamePointAccumulator : MonoBehaviour
     private bool mMissionClear = false;
     private bool mAlreadyDone = false;
 
+    private bool mClothesToMelIsEnd = false;
+    public bool ClothesToMelIsEnd
+    {
+        get
+        {
+            return mClothesToMelIsEnd;
+        }
+        set
+        {
+            mClothesToMelIsEnd = value;
+        }
+    }
+    private string mRecentlyCloth = null;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,7 +41,10 @@ public class GamePointAccumulator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (SystemManager.Instance.GetCurrentSceneMain<InGameSceneMain>().Mel.IsCrash)
+        {
+            ClothesToMel();
+        }
     }
 
     // 올바른 답을 찾으면 1, 아니면 0
@@ -117,5 +134,25 @@ public class GamePointAccumulator : MonoBehaviour
         CompleteBotton.SetActive(false);
         GameEndPanel gameEndPanel = PanelManager.GetPanel(typeof(GameEndPanel)) as GameEndPanel;
         gameEndPanel.ShowGameEnd(mMissionClear);
+    }
+    // 해당 옷을 멜에게 주면 그 옷을 입어야 하는 룰
+    private void ClothesToMel()
+    {
+        /*해당 옷이 멜에게 놓으면 그 옷을 확대후 입혀라*/
+        // 함수를 반드시 1번 실행하게 끔 함
+        if (!mClothesToMelIsEnd)
+        {
+            // 만약 입혀진 옷이 있을 때
+            if (mRecentlyCloth != null)
+            {
+                // 입혀진 옷을 원래 크기로 만든 후 캐쉬로 반환
+            }
+            // 옷이 멜에게 부딪혔을때 옷의 이름을 가져와라
+            mRecentlyCloth = SystemManager.Instance.GetCurrentSceneMain<InGameSceneMain>().Mel.CrashedObject().name;
+            // 그 옷을 Item 캐쉬에서 꺼내와서 적절한 위치에 고정배치하라
+            // 그 옷을 확대하라
+            // 함수 종료 플래그 온
+            mClothesToMelIsEnd = true;
+        }
     }
 }

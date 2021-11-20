@@ -8,7 +8,8 @@ public class CollectionContent : MonoBehaviour
     {
         for (int i = 0; i < transform.childCount; i++)
         {
-            transform.GetChild(i).transform.GetChild(1).gameObject.SetActive(false);
+            transform.GetChild(i).transform.GetChild(0).gameObject.SetActive(false);
+            transform.GetChild(i).transform.GetChild(2).gameObject.SetActive(false);
         }
     }
     // Start is called before the first frame update
@@ -20,9 +21,10 @@ public class CollectionContent : MonoBehaviour
         {
             if (sp.Count != i)
             {
-                transform.GetChild(i).transform.GetChild(0).gameObject.SetActive(false);
-                transform.GetChild(i).transform.GetChild(1).gameObject.SetActive(true);
-                transform.GetChild(i).transform.GetChild(2).GetComponent<Text>().text = KrName(sp[i].name);
+                transform.GetChild(i).transform.GetChild(0).gameObject.SetActive(true);
+                transform.GetChild(i).transform.GetChild(1).gameObject.SetActive(false);
+                transform.GetChild(i).transform.GetChild(2).gameObject.SetActive(true);
+                transform.GetChild(i).transform.GetChild(3).GetComponent<Text>().text = KrName(sp[i].name);
                 transform.GetChild(i).GetComponent<Image>().sprite = sp[i];
             }
             else
