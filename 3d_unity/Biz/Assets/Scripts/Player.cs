@@ -46,7 +46,6 @@ public class Player : MonoBehaviour
     {
         // 부딪힌 게임 오브젝트를 가져옴
         GameObject go = mCrashedObject;
-        mCrashedObject = null;
         // 그 오브젝트를 리턴함
         return go;
         
@@ -54,22 +53,24 @@ public class Player : MonoBehaviour
     // 표정 변화
     private void ChangeExpression()
     {
+        string whatMisson = null;
+
         // 표정 변화
         transform.GetChild(0).gameObject.SetActive(true);                   // 평상시 표정
         transform.GetChild(1).gameObject.SetActive(false);
         transform.GetChild(2).gameObject.SetActive(false);
 
-        if (SystemManager.Instance.GetCurrentSceneMain<InGameSceneMain>().GamePointAccumulator.IsItCorrect())      // 정답일 경우 웃음
+        if (SystemManager.Instance.GetCurrentSceneMain<InGameSceneMain>().GamePointAccumulator.IsItCorrect(out whatMisson))      // 정답일 경우 웃음
         {
             transform.GetChild(0).gameObject.SetActive(false);
             transform.GetChild(1).gameObject.SetActive(true);
-            SystemManager.Instance.GetCurrentSceneMain<InGameSceneMain>().GamePointAccumulator.SuccessOrNot(true);
+            SystemManager.Instance.GetCurrentSceneMain<InGameSceneMain>().GamePointAccumulator.SuccessOrNot(true, whatMisson);
         }
         else                                                                // 오답일 경우 찡그림
         {
             transform.GetChild(0).gameObject.SetActive(false);
             transform.GetChild(2).gameObject.SetActive(true);
-            SystemManager.Instance.GetCurrentSceneMain<InGameSceneMain>().GamePointAccumulator.SuccessOrNot(false);
+            SystemManager.Instance.GetCurrentSceneMain<InGameSceneMain>().GamePointAccumulator.SuccessOrNot(false, whatMisson);
         }
     }
 }

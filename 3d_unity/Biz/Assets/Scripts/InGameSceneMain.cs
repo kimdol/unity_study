@@ -44,6 +44,16 @@ public class InGameSceneMain : BaseSceneMain
     }
 
     [SerializeField]
+    ItemManager itemManager;
+    public ItemManager ItemManager
+    {
+        get
+        {
+            return itemManager;
+        }
+    }
+
+    [SerializeField]
     JobNameTitle jabnameTitle;
     public JobNameTitle JobNameTitle
     {
@@ -99,6 +109,15 @@ public class InGameSceneMain : BaseSceneMain
         get
         {
             return clothesCacheSystem;
+        }
+    }
+
+    PrefabCacheSystem itemCacheSystem = new PrefabCacheSystem();
+    public PrefabCacheSystem ItemCacheSystem
+    {
+        get
+        {
+            return itemCacheSystem;
         }
     }
 

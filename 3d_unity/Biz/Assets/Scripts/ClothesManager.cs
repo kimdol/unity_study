@@ -11,12 +11,13 @@ public class ClothesManager : MonoBehaviour
 
     public int Clothes01Index = 0;
     public int Clothes02Index = 1;
+    public int Clothes03Index = 2;
+    public int Clothes04Index = 3;
 
     // Start is called before the first frame update
     void Start()
     {
         Prepare();
-        Vector3 a = new Vector3(0, 0, 0);
     }
 
     // Update is called once per frame

@@ -9,6 +9,8 @@ public class ButtonSystem : MonoBehaviour
     int mPrevPage = 1;
     bool mTriggerFlag = true;
 
+    int LASTPAGE = 3;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -36,8 +38,22 @@ public class ButtonSystem : MonoBehaviour
     {
         SystemManager.Instance.GetCurrentSceneMain<InGameSceneMain>().ClothesSetting.Setting(mPage);
 
-        transform.GetChild(mPage).gameObject.SetActive(true);
-        transform.GetChild(mPrevPage).gameObject.SetActive(false);
-        mPrevPage = mPage;
+        // 만약 첫페이지이거나 마지막페이지일경우 버튼 나타남 토글
+        if (mPage == 0)
+        {
+            transform.GetChild(0).gameObject.SetActive(true);
+            transform.GetChild(1).gameObject.SetActive(false);
+        }
+        else if (mPage == LASTPAGE)
+        {
+            transform.GetChild(1).gameObject.SetActive(true);
+            transform.GetChild(0).gameObject.SetActive(false);
+        }
+        else
+        {
+            transform.GetChild(0).gameObject.SetActive(true);
+            transform.GetChild(1).gameObject.SetActive(true);
+        }
+        
     }
 }

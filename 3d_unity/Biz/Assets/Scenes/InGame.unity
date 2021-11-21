@@ -284,6 +284,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 133664314}
+  - component: {fileID: 133664315}
   m_Layer: 0
   m_Name: FuncActivityDetection
   m_TagString: Untagged
@@ -305,6 +306,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &133664315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 133664313}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df7d778133e6ee940a53bbd366c46e1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &150259257
 GameObject:
   m_ObjectHideFlags: 0
@@ -323,7 +336,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &150259258
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -728,6 +741,90 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 16
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &381028520
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 381028522}
+  - component: {fileID: 381028521}
+  m_Layer: 0
+  m_Name: ItemManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &381028521
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 381028520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94bce2a52ece1124a8cbec783bed9bbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ItemFiles:
+  - filePath: Prefabs/Items/Artist
+    cacheCount: 1
+  - filePath: Prefabs/Items/ArtistItem
+    cacheCount: 1
+  - filePath: Prefabs/Items/Carpenter
+    cacheCount: 1
+  - filePath: Prefabs/Items/CarpenterItem
+    cacheCount: 1
+  - filePath: Prefabs/Items/Cook
+    cacheCount: 1
+  - filePath: Prefabs/Items/CookItem
+    cacheCount: 1
+  - filePath: Prefabs/Items/Doctor
+    cacheCount: 1
+  - filePath: Prefabs/Items/DoctorItem
+    cacheCount: 1
+  - filePath: Prefabs/Items/Farmer
+    cacheCount: 1
+  - filePath: Prefabs/Items/FarmerItem
+    cacheCount: 1
+  - filePath: Prefabs/Items/Firefighter
+    cacheCount: 1
+  - filePath: Prefabs/Items/FirefighterItem
+    cacheCount: 1
+  - filePath: Prefabs/Items/Hairdresser
+    cacheCount: 1
+  - filePath: Prefabs/Items/HairdresserItem
+    cacheCount: 1
+  - filePath: Prefabs/Items/Marine
+    cacheCount: 1
+  - filePath: Prefabs/Items/MarineItem
+    cacheCount: 1
+  - filePath: Prefabs/Items/Police
+    cacheCount: 1
+  - filePath: Prefabs/Items/PoliceItem
+    cacheCount: 1
+  - filePath: Prefabs/Items/Singer
+    cacheCount: 1
+  - filePath: Prefabs/Items/SingerItem
+    cacheCount: 1
+--- !u!4 &381028522
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 381028520}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 602, y: 637, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &462150560
 GameObject:
@@ -1346,6 +1443,22 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1794635854916817227, guid: ff671cf29be83504f943341fd04caa93, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 4.96
+      objectReference: {fileID: 0}
+    - target: {fileID: 1794635854916817227, guid: ff671cf29be83504f943341fd04caa93, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 7.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2525553151306140544, guid: ff671cf29be83504f943341fd04caa93, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 4.96
+      objectReference: {fileID: 0}
+    - target: {fileID: 2525553151306140544, guid: ff671cf29be83504f943341fd04caa93, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 7.6
+      objectReference: {fileID: 0}
     - target: {fileID: 2525553151306140548, guid: ff671cf29be83504f943341fd04caa93, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -1353,6 +1466,14 @@ PrefabInstance:
     - target: {fileID: 3296923195226644597, guid: ff671cf29be83504f943341fd04caa93, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3296923195226644601, guid: ff671cf29be83504f943341fd04caa93, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 4.96
+      objectReference: {fileID: 0}
+    - target: {fileID: 3296923195226644601, guid: ff671cf29be83504f943341fd04caa93, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 7.6
       objectReference: {fileID: 0}
     - target: {fileID: 7309530477284717644, guid: ff671cf29be83504f943341fd04caa93, type: 3}
       propertyPath: m_Name
@@ -1368,7 +1489,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7309530477284717645, guid: ff671cf29be83504f943341fd04caa93, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.13
+      value: -0.26
       objectReference: {fileID: 0}
     - target: {fileID: 7309530477284717645, guid: ff671cf29be83504f943341fd04caa93, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2409,6 +2530,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 800347941}
   clothesManager: {fileID: 2133112822}
+  itemManager: {fileID: 381028521}
   jabnameTitle: {fileID: 337151983}
   inputContrller: {fileID: 1630603597}
   gamePointAccumulator: {fileID: 1997393878}
@@ -2714,8 +2836,14 @@ MonoBehaviour:
     cacheCount: 2
   - filePath: Prefabs/Clothes/Clothes02
     cacheCount: 2
+  - filePath: Prefabs/Clothes/Clothes03
+    cacheCount: 2
+  - filePath: Prefabs/Clothes/Clothes04
+    cacheCount: 2
   Clothes01Index: 0
   Clothes02Index: 1
+  Clothes03Index: 2
+  Clothes04Index: 3
 --- !u!4 &2133112823
 Transform:
   m_ObjectHideFlags: 0
