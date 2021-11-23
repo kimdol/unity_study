@@ -24,4 +24,10 @@ public class ExpansionPanel : BasePanel
     {
         base.Close();
     }
+
+    // 소리 버튼
+    public void OnTTS()
+    {
+        MusicBox.Instance.InputPlayMusicName(mSprite.name);
+    }
 }

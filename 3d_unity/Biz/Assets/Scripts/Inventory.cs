@@ -39,7 +39,9 @@ public class CollectionFilePath
         }
     }
 
+
     private Dictionary<string, Sprite> imageCache = new Dictionary<string, Sprite>();
+
 
     private static Inventory instance = null;
     public static Inventory Instance
