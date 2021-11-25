@@ -16,6 +16,7 @@ public class CollectionSceneMain : BaseSceneMain
 
     public void GotoTitleScene()
     {
+        DestroyImmediate(SpeedWagan.Instance.gameObject);
         DestroyImmediate(MusicBox.Instance.gameObject);
         // 시스템 매니저를 파괴
         DestroyImmediate(SystemManager.Instance.gameObject);

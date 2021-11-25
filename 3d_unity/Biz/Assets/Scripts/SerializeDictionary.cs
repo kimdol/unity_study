@@ -33,3 +33,4 @@ public class SerializeDictionary<K, V> : Dictionary<K, V>, ISerializationCallbac
 		}
 	}
 }
+

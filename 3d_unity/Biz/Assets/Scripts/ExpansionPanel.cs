@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class ExpansionPanel : BasePanel
 {
+    [SerializeField]
+    Text mExplainText;
+
     private Sprite mSprite;
     public override void InitializePanel()
     {
@@ -18,6 +21,8 @@ public class ExpansionPanel : BasePanel
         base.Show();
         // 확장된 이미지를 보이기
         transform.GetChild(0).GetComponent<Image>().sprite = mSprite;
+        // 설명보이기
+        JobExplain();
     }
 
     public void OnOK()
@@ -29,5 +34,16 @@ public class ExpansionPanel : BasePanel
     public void OnTTS()
     {
         MusicBox.Instance.InputPlayMusicName(mSprite.name);
+    }
+
+    // 스피드웨건 등장
+    private void JobExplain()
+    {
+        string upDateText = null;
+        string RecentlyName = mSprite.name;
+
+        SpeedWagan.Instance.WriteText(out upDateText, RecentlyName);
+        mExplainText.text = upDateText;
+
     }
 }

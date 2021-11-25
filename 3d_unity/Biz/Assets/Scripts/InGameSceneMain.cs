@@ -183,6 +183,7 @@ public class InGameSceneMain : BaseSceneMain
     public void GotoTitleScene()
     {
         DestroyImmediate(MusicBox.Instance.gameObject);
+        DestroyImmediate(SpeedWagan.Instance.gameObject);
         // 시스템 매니저를 파괴
         DestroyImmediate(SystemManager.Instance.gameObject);
         SceneController.Instance.LoadSceneImmediate(SceneNameConstants.TitleScene);
