@@ -128,4 +128,9 @@ public class InputController : MonoBehaviour
         }
     }
 
+    public void PrevButton()
+    {
+        SystemManager.Instance.GetCurrentSceneMain<InGameSceneMain>().GotoTitleScene();
+    }
+
 }
