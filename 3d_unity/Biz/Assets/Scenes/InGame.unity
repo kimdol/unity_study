@@ -180,7 +180,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 7b3572628069124499f9b610cfafeb6a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7b8d52b5eacbf5c4b9ca60ba0ba7912f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -676,9 +676,9 @@ MonoBehaviour:
   - "\uAC00\uC218"
   - "\uACBD\uCC30"
   - "\uB18D\uBD80"
-  - "\uBAA9\uC218"
   - "\uC758\uC0AC"
   - "\uC694\uB9AC\uC0AC"
+  - 
 --- !u!1 &342242191
 GameObject:
   m_ObjectHideFlags: 0
@@ -910,7 +910,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 396997749}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1630603597}
+        m_TargetAssemblyTypeName: InputController, Assembly-CSharp
+        m_MethodName: PrevButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &396997749
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2266,7 +2278,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: f6ee651c272c6044795c20bfcb25195e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1e153148407700d489569e05dd15eb06, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
