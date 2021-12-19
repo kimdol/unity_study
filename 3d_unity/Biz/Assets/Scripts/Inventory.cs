@@ -14,7 +14,7 @@ public class CollectionFilePath
     }
 }
     public class Inventory : MonoBehaviour
-{
+{ 
     public class CollectionConstants
     {
         public static CollectionFilePath Artist = new CollectionFilePath("UI/SuccessGame/Collection/Artist", "Prefabs/Etc/Collection/ArtistCollection");
