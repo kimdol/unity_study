@@ -15,7 +15,7 @@ public class ClothesSetting : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+         
     }
 
     // 페이지에 따른 옷들 세팅
