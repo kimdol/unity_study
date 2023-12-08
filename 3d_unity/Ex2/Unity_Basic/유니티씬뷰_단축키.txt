@@ -1,0 +1,22 @@
+Hand Tool : Q
+Move Tool : W
+Rotate Tool : E
+Scale Tool : R
+Rect Transform Tool : T
+Rotate, Move or Scale : Y
+
+
+선택한 오브젝트를 중심에 놓음 : F
+
+
+2D view가 아닌 3D view에서만 가능
+좌우로 이동 : 마우스 오른쪽 단추 클릭과 동시에 A 및 D키
+앞뒤로 이동 : 마우스 오른쪽 단추 클릭과 동시에 W 및 S키
+상하로 이동 : 마우스 오른쪽 단추 클릭과 동시에 Q 및 E키
+
+
+
+씬에서 게임 오브젝트를 선택 : 마우스 왼쪽 버튼을 클릭
+씬 뷰의 카메라를 이동 : 핸드 툴을 사용하여 마우스 중간 버튼을 클릭하고 드래그
+씬 뷰의 카메라를 회전 : 핸드 툴의 응용 버전인 플라이스루(flythrough) 모드에서는 마우스 오른쪽 버튼을 클릭하고 드래그
+
