@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="InventoryTetris">
+    <Position X="3.75" Y="1.75" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Class Name="InventoryTetris.GridObject" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Assets\InventoryTetris\Scripts\InventoryTetris.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Struct Name="InventoryTetris.AddItemTetris" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Assets\InventoryTetris\Scripts\InventoryTetris.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Struct>
+      <Struct Name="InventoryTetris.ListAddItemTetris" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Assets\InventoryTetris\Scripts\InventoryTetris.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Struct>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAkIAAAAIAAAAAAAAAAAAQBggACAAgQAAAAAAAAEA=</HashCode>
+      <FileName>Assets\InventoryTetris\Scripts\InventoryTetris.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="grid" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Grid&lt;TGridObject&gt;">
+    <Position X="7.25" Y="1.75" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+      <Compartment Name="Events" Collapsed="true" />
+    </Compartments>
+    <NestedTypes>
+      <Class Name="Grid&lt;TGridObject&gt;.OnGridObjectChangedEventArgs" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Assets\_\Stuff\Videos\Grid\Grid.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AACAEAACAAAIAIQAQgQAQABAAAAAAAQAAAABAkAAAAA=</HashCode>
+      <FileName>Assets\_\Stuff\Videos\Grid\Grid.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="맑은 고딕" Size="9" />
+</ClassDiagram>

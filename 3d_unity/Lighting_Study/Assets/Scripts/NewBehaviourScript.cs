@@ -15,4 +15,17 @@ public class NewBehaviourScript : MonoBehaviour
     {
         
     }
+
+    void OnDrawGizmos()
+    {
+        Mesh mesh = GetComponent<MeshFilter>().mesh;
+        Vector3[] vertices = mesh.vertices;
+
+        for (int i = 0; i < vertices.Length; i++)
+        {
+            Vector3 worldVertex = transform.TransformPoint(vertices[i]);
+            Gizmos.DrawSphere(worldVertex, 0.1f);
+            UnityEditor.Handles.Label(worldVertex, worldVertex.ToString());
+        }
+    }
 }
